@@ -10,7 +10,7 @@ Thanks to this application, you get more control over the Android applicaction p
 * OS: GNU/Linux
 * Python3
 * To have Android Debug Bridge(ADB) configured.
-[What is ADB?](https://en.wikipedia.org/wiki/ADB)
+[What is ADB?](https://en.wikipedia.org/wiki/Android_Debug_Bridge)
 ### How to download and set ADB on  GNU/Linux?
 * Download this zip file [here](https://dl.google.com/android/repository/platform-tools_r31.0.2-linux.zip)
 

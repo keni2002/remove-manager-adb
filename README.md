@@ -22,7 +22,7 @@ Thanks to this application, you get more control over the Android applicaction p
 * At the End of the file, Write this:
   `export PATH=${PATH}:/home/”*user*”/*"unzip folder"*`
 * Press `Ctrl + O` to save change.
-* Luego `Ctrl + X` to exit nano.
+* Next `Ctrl + X` to exit.
 * Ready :)
 
 

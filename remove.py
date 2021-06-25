@@ -1,6 +1,42 @@
 #declaring libraies
 import os
-# necessary variables 
+# necessary variables  and functions
+package_global =[]
+def loadin(word):
+    if word == 'none':
+        os.system("adb shell pm list packages > .list.txt")
+    else:
+        os.system("adb shell pm list packages | grep " + word + "> .list.txt")
+    flow = open(".list.txt", "r")
+    #local variables
+    lista = []
+    linea = ""
+    contar = 0
+
+    os.system("clear")
+    input(chr(27) + "[14;31m" + "Attention, a list will appear,\n Use Up and Down Keys to move\n" +
+            "across package names. You MUST Remember ID of the searched package. After..\n" +
+            "press <q> key to exit from list\n" +
+            "Let's go: "+ chr(27) +"[0;30m")
+    while(True):
+        linea = flow.readline()
+        if not linea:
+            break
+        else:
+            lista.append(str(linea[8:]))
+            
+    flow.close()
+    #I need a this var in all project
+    package_global = lista
+    flow = open("cache.dat", "a")
+    for x in lista:
+        contar += 1
+        flow.write(str(contar) + " " + x)
+    flow.close()
+    os.system("less cache.dat")    
+    os.system("rm cache.dat")
+
+
 f = open(".device.txt", "r")
 var1 = 0
 var2 = 1
@@ -37,9 +73,11 @@ elif len(linea) > 7 and len(linea) < 26:
                     var1 = 3
                     os.system("clear")
                 elif option == 1:
-                    pass
-                elif option ==2:
-                    pass
+                    cad = str(input("Please insert the searched package: "))
+                    loadin(cad)
+                elif option == 2:
+                    loadin('none')
+                    
                 else:
                     input("Invalid selection, try again: ")
                 
@@ -63,3 +101,5 @@ else:
     print("\n  **Please, Make sure to connect your phone to PC and Debug USB Mode is activated**\nExiting...")
 
 f.close()
+
+

@@ -16,19 +16,25 @@ Thanks to this application, you get more control over the Android applicaction p
 
     > *Attention, the download may NOT be available in your country*
 
-* Unzip the file in `/home/*"user"*/`
-* Modify the .bashrc file in the location: `/home/*"user"*/` 
+* Unzip the file in `/home/(user)/`
+* Modify the .bashrc file in the location: `/home/(user)/` 
   with: `$ sudo nano .bashrc`
 * At the End of the file, Write this:
-  `export PATH=${PATH}:/home/”*user*”/*"unzip folder"*`
+  `export PATH=${PATH}:/home/(user)/(unzip folder)`
 * Press `Ctrl + O` to save change.
 * Next `Ctrl + X` to exit.
 * Ready :)
 
 
 ## Usage:
-
-Inside the directory execute the following line in the terminal, and follow the instructions.
+* Connect your phone via USB 2.0.
+* Activate the `Developer options`, at `About Phone section settings`
+  pressing several times on the `Build Number`.
+* At `System option settings` access `Developer options`
+* In Debugging section activate `USB debugging`
+* Use USB to `Transfer files` at notification bar.
+In your Computer: 
+* Inside the directory execute the following line in the terminal, and follow the instructions.
 
   `$ python3 remove.py`
 

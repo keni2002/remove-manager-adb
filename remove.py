@@ -1,15 +1,15 @@
 #declaring libraies
 import os
 # necessary variables  and functions
-package_global =[]
-#local variables
+
+
+#functions
+#Loadin Function
 lista = []
-linea = ""
-
-
-
-#function
+#checker;
+checker = False
 def loadin(word):
+    
     if word == 'none':
         os.system("adb shell pm list packages > .list.txt")
     else:
@@ -33,8 +33,7 @@ def loadin(word):
     else:
 
 
-        #I need a this var in all project
-        package_global = lista
+        
         flow = open("cache.dat", "a")
         contar = 0
         for x in lista:
@@ -42,18 +41,19 @@ def loadin(word):
             contar += 1
             flow.write(str(contar) + " " + x)
         flow.close()
-        input(chr(27) + "[14;31m" + "Attention, a list will appear,\n Use Up and Down Keys to move\n" +
+        os.system("rm .list.txt")
+        z = input(chr(27) + "[14;31m" + "Attention, a list will appear,\n Use Up and Down Keys to move\n" +
             "across package names. You MUST Remember ID of the searched package. After..\n" +
             "press <q> key to exit from list\n" +
             "Let's go: "+ chr(27) +"[0;30m")
         os.system("less cache.dat")    
         os.system("rm cache.dat")
+        
         return True
-
+#End Loadin Function
+#locals
 f = open(".device.txt", "r")
-var1 = 0
-var2 = 1
-option = 0
+linea = ""
 os.system("adb devices > .device.txt")
 linea = f.readlines()[1]
 if len(linea) > 26:
@@ -66,7 +66,7 @@ elif len(linea) > 7 and len(linea) < 26:
     print(chr(27) +"[0;30m" + "\n" + linea )
     input("Press Enter to continue:")
         
-
+    option = 0
     while(True):
         
         os.system("clear")
@@ -85,8 +85,7 @@ elif len(linea) > 7 and len(linea) < 26:
                 os.system("clear")
             elif option == 1:
                 cad = str(input("Please insert the searched package: "))
-                #checker;
-                checker = False
+                
                 
                 #if checker is True then bucle is stoped
                     
@@ -104,10 +103,40 @@ elif len(linea) > 7 and len(linea) < 26:
               
         except ValueError:
             input("Invalid selection, TRY again")
-                
+               
         if checker == True:
-            input("I will put the task menu here")
-            break # maybe this line was delete in the future
+            
+            #try:
+                while(True):
+                    os.system("clear")
+                    value_id  = int(input("Please insert the ID of desired package: "))
+                    
+
+                    if value_id > 0 and value_id <= len(lista):
+                        os.system("clear")
+                        
+                        print(chr(27) +"[14;31m" + "\t\t<<MENU OF TASKS>>\n\t" + chr(27) +"[14;35m"+"Package Selected: "+ lista[value_id-1]+"\t")
+                        option = int(input("\n" + chr(27) +"[0;30m" + "[Select an option to Manage the Application Pack]\n" +
+                                    " 1 Uninstall this Package\n" +
+                                    " 2 Uninstall but KEEP the data and cache directories of this Package\n" +
+                                    " 3 Exit\n" +
+                                    ">> "))
+                    
+                    
+                        #restart list
+                        lista = []
+                    
+                    
+                    else:
+                      z =  input(chr(27) +"[14;31m"+ "FAILURE: ID out of package range.\n" +
+                                chr(27) +"[0;30m" +
+                                "Range=[1-"+ str(len(lista))+"]")
+
+            #except:
+                #pass    
+           # while(True):
+
+            #break # maybe this line was delete in the future
         else:
             pass
     

@@ -33,7 +33,8 @@ Thanks to this application, you get more control over the Android applicaction p
 * At `System option settings` access `Developer options`
 * In Debugging section activate `USB debugging`
 * Use USB to `Transfer files` at notification bar.
-In your Computer: 
+
+  In your Computer: 
 * Inside the directory execute the following line in the terminal, and follow the instructions.
 
   `$ python3 remove.py`
